@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+<div class="card mr-5">
+	<div class="card-body">
+	
+
+<h1 class="text-center">Update</h1>
+<div class="cotainer-fluid mt-1">
+	<div class="row">
+		<div class="col-md-10 offset-md-1">
+		
+			<form action=""
+			th:object="${contact}"
+			enctype="multipart/form-data"
+			method="post"
+			th:action="@{/user/finalUpdate}"
+			class="mt-2">
+			
+			
+			
+			<div class="input-group  mt-1">
+				
+				<input th:value="${contact.name}" required="required" type="text" name="name" placeholder="enter name here" class="form-control">
+			</div>
+			
+				
+				
+				<input th:value="${contact.cid}" required="required" type="hidden" name="cid" placeholder="enter email here" class="form-control">
+		
+			
+			<div class="input-group  mt-3">
+				
+				<input th:value="${contact.email}" required="required" type="text" name="email" placeholder="enter email here" class="form-control">
+			</div>
+			
+			<div class="input-group  mt-3">
+				
+				<input  th:value="${contact.nickname}"  type="text" required="required" name="nickname" placeholder="enter nickname here" class="form-control">
+			</div>
+			
+			<div class="input-group  mt-3">
+				
+				<input th:value="${contact.work}"  required="required" type="text" name="work" placeholder="enter Work here" class="form-control">
+			</div>
+			
+			<div class="input-group  mt-3">
+			
+				<input th:value="${contact.phone}"  required="required" type="text" name="phone" placeholder="enter phone No. here" class="form-control">
+			</div>
+			
+				<div class="input-group  mt-3">
+			
+				<label class="visually-hidden" for="id">Description</label>
+				<textarea th:text="${contact.description}"  rows="10" cols="50" name="description" id="id" placeholder="enter Description here" class="form-control">
+				</textarea>
+			</div>
+			
+			<div class="input-group  mt-3">
+				<label class="form-label" for="customFile">Upload image</label>
+					<input type="file" required="required" class="form-control" id="customFile" name="img" />
+			</div>
+			
+	
+			
+			  <div class="conatiner mt-3 text-center">
+   				 <button type="submit" class="btn btn-primary">Update</button>
+  			</div>
+			
+			</form>
+		</div>
+	</div>
+
+</div>
+	</div>
+</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+	<div class="card mr-5">
+		<div class="card-body">
+			<h1 class="text-center">Contact</h1>
+			
+		<div class="container" th:if="${session.msg1}">
+			<div th:classappend="${'alert-'+session.msg1.typeString}"
+				class="alert alert-success text-center" role="alert">
+				<span th:text="${session.msg1.messageString}"></span>
+			</div>
+			<th:block th:text="${#session.removeAttribute('msg1')}">
+
+			</th:block>
+		</div>
+		
+		
+			
+				<div class="container text-center mt-3">
+					<img src="" class="my_profile_img_contact" th:src="@{/imgs/dppp.png}" alt="" />
+					<h2><span th:text="${contact.name}"></span>(<span th:text="${contact.nickname}"></span>)</h2>
+			    </div>
+			
+			<table class="table text-center mt-3">
+
+
+  <tbody>
+    <tr>
+      <th scope="row">ID : </th>
+      <td th:text="${contact.cid}"></td>
+    </tr>
+    
+     <tr>
+      <th scope="row">Email : </th>
+      <td th:text="${contact.email}"></td>
+    </tr>
+  
+     <tr>
+      <th scope="row">WOrk : </th>
+      <td th:text="${contact.work}"></td>
+    </tr>
+    
+      <tr>
+      <th scope="row">Phone No : </th>
+      <td th:text="${contact.phone}"></td>
+    </tr>
+    
+      <tr>
+      <th scope="row">Description : </th>
+      <td th:text="${contact.description}"></td>
+    </tr>
+    
+    
+    
+  </tbody>
+</table>
+		<div class="container text-center">
+		<a type="button" class="btn btn-primary btn-sm">Update</a>
+		<a   type="button" class="btn btn-secondary btn-sm">Delete</a>
+		</div>
+		</div>
+	</div>
+
+</section>
+
+</body>
+</html>

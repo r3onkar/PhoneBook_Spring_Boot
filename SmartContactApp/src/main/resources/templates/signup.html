@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+
+		<div class="conainer">
+
+			<div class="row">
+
+				<div class="col-md-8 offset-md-2">
+
+					<div class="my-card mt-4">
+
+						<div class="container text-center">
+							<img alt="" style="width: 80px" th:src="@{/imgs/register.png}">
+						</div>
+
+						<h1 class="text-center">SignUp Here...</h1>
+						
+						<div th:if="${session.message}" th:classappend="${session.message.typeString}" class="alert" role="alert">
+							<p th:text="${session.message.messageString}"></p>
+							<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+						</div>
+
+						<form th:action="@{/userDataHandler}" method="post" th:object="${userObj}">
+
+							<div class="mb-3">
+								<label for="exampleInputEmail1" class="form-label">Name
+								</label> <input type="text" class="form-control" name="name" th:value="${userObj.name}"
+								th:classappend="${#fields.hasErrors('name')?'is-invalid':''}">
+								
+								<div class="invalid-feedback" th:each="e:${#fields.errors('name')}" th:text="${e}"></div>
+								
+							</div>
+							<div class="mb-3">
+								<label for="exampleInputEmail1" class="form-label">Email
+								</label> <input type="email" class="form-control" name="email" th:value="${userObj.email}"
+								th:classappend="${#fields.hasErrors('email')?'is-invalid':''}">
+								
+								<div class="invalid-feedback" th:each="e:${#fields.errors('email')}" th:text="${e}"></div>
+							</div>
+							<div class="mb-3">
+								<label for="exampleInputEmail1" class="form-label">Password
+								</label> <input type="password" class="form-control" name="pass" th:value="${userObj.pass}"
+								th:classappend="${#fields.hasErrors('pass')?'is-invalid':''}">
+								<div class="invalid-feedback" th:each="e:${#fields.errors('pass')}" th:text="${e}"></div>
+							</div>
+							<div class="mb-3 form-group">
+								<label for="exampleInputEmail1" class="form-label">About
+								</label>
+								<textarea rows="10" cols="90" name="about" class="form-control" th:value="${userObj.about}"></textarea>
+							</div>
+
+							<div class="mb-3 form-check ">
+								<input type="checkbox" class="form-check-input text-center"
+									id="exampleCheck1" name="agreement"> <label class="form-check-label"
+									for="exampleCheck1">Agree to terms and conditions</label>
+							</div >
+														
+							<div class="container text-center">
+							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="reset" class="btn btn-secondary">Reset</button>
+							
+							</div>
+							
+							
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
+</body>
+</html>
